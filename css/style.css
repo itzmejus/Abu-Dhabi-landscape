@@ -14250,8 +14250,8 @@ html.tablet .ui-to-top {
 }
 
 .rd-navbar-fixed .rd-navbar-brand img {
-	max-width: 120px;
-	max-height: 58px;
+	/* max-width: 120px; */
+	/* max-height: 58px; */
 	width: auto;
 	height: auto;
 }
@@ -16198,8 +16198,8 @@ html.rd-navbar-fixed-linked .page-header {
 
 @media (min-width: 1200px) {
 	.rd-navbar-creative.rd-navbar-static .rd-navbar-brand img {
-		max-width: 200px;
-		max-height: 170px;
+		/* max-width: 200px; */
+		/* max-height: 170px; */
 	}
 }
 
