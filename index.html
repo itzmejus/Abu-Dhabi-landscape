@@ -852,6 +852,7 @@
                   <div class="box-footer-form wow slideInLeft">
                     <form id="contact-form" class="rd-form rd-mailform" data-form-output="form-output-global"
                       data-form-type="contact" action="https://formspree.io/f/mgvpapeg" method="POST">
+                      <input type="text" name="_gotcha" style="display:none;">
                       <div class="form-wrap">
                         <input class="form-input" id="contact-name-7" type="text" name="name"
                           data-constraints="@Required">
@@ -920,13 +921,21 @@
     const form = document.getElementById("contact-form");
     const status = document.getElementById("form-status");
     const submitBtn = document.getElementById("submit-btn");
+    let lastSubmission = 0;
 
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
 
-      // Disable button and show loading text
+      const now = Date.now();
+      if (now - lastSubmission < 10000) {
+        status.innerHTML = "⚠️ Please wait a few seconds before submitting again.";
+        return;
+      }
+      lastSubmission = now;
+
       submitBtn.disabled = true;
       submitBtn.innerText = "Sending...";
+
 
       try {
         const response = await fetch(form.action, {
